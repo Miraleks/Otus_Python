@@ -5,6 +5,15 @@
 
 
 def is_prime(n):
+    """
+    функция, которая проверяет, является ли число простым
+    >>> is_prime(17)
+    <<< True
+    >>> is_prime(22)
+    <<< False
+
+    """
+
     if n > 1:
         d = 2
         while d * d <= n and n % d != 0:
@@ -25,10 +34,14 @@ def power_numbers(*args):
 
 
 # filter types
-# таки да, я знаю, что присваивать константе лямбду нехорошо
-ODD = lambda x: x if x % 2 != 0 else False
-EVEN = lambda x: x if x % 2 == 0 else False
-PRIME = is_prime
+
+ODD = "odd"
+EVEN = "even"
+PRIME = "prime"
+
+choise_func = {'odd': lambda x: x if x % 2 != 0 else False,
+               'even': lambda x: x if x % 2 == 0 else False,
+               'prime': is_prime}
 
 
 def filter_numbers(nums, func):
@@ -42,4 +55,4 @@ def filter_numbers(nums, func):
     >>> filter_numbers([2, 3, 4, 5], EVEN)
     <<< [2, 4]
     """
-    return list(filter(func, nums))
+    return list(filter(choise_func[func], nums))
