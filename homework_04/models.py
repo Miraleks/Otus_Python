@@ -16,7 +16,6 @@ from sqlalchemy.orm import declarative_base, declared_attr, scoped_session, rela
 
 import os
 
-from homework_04 import config
 
 PG_CONN_URI = os.environ.get("SQLALCHEMY_PG_CONN_URI") or "postgresql+asyncpg://username:userpass@localhost/postgres"
 
@@ -29,8 +28,7 @@ class Base:
     id = Column(Integer, primary_key=True)
 
 async_engine = create_async_engine(
-    url=config.DB_ASYNC_URL,
-    echo=config.DB_ECHO
+    url=PG_CONN_URI
 )
 
 async_session = sessionmaker(
