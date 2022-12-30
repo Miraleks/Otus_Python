@@ -50,7 +50,7 @@ class User(Base):
     username = Column(String(60), nullable=False)
     email = Column(String(60), nullable=False, unique=True)
 
-    posts = relationship("Post", back_populates="user", uselist=False)
+    posts = relationship("Post", back_populates="user", uselist=True)
 
 
     def __str__(self):
@@ -81,7 +81,7 @@ class Post(Base):
         nullable=False
     )
 
-    user = relationship("User", back_populates="posts", uselist="False")
+    user = relationship("User", back_populates="posts", uselist=False)
 
     def __str__(self):
         return (
