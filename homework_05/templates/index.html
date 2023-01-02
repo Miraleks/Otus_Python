@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+
+    <title>
+        {% block title %}
+            Homework 05
+        {% endblock %}
+    </title>
+
+
+</head>
+<body>
+<h class="h5 my-2">Hello, OTUS!</h>
+
+<nav class="navbar navbar-expand-sm bg-body-tertiary" style="background-color: #25cff2">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto">
+                {% for endpoint, label in [
+                ('index_page', 'Home'),
+                ('about', 'About'),
+                ] %}
+
+                {% set path = url_for(endpoint) %}
+                <li class="nav-item">
+                    <a class="nav-link {{ 'active' if path == request.path else '' }}"
+                       href="{{ path }}">
+                        {{ label }}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    {% block body %}
+        <p class="h5 my-2">Тут текст от index_page</p>
+        <p class="my-1">Если выбрать в меню About</p>
+        <p class="my-1">то можно попасть на другую страницу</p>
+
+    {% endblock %}
+</div>
+
+<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+<br>
+
+<p class="my-1">&copy; ДНО КАКОЕ-ТО</p>
+</body>
+</html>
