@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Index page with extends
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/push-button.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="h3">Какая-то надпись with extends</div>
+
+    <div>
+        <div>
+            Clicked <span id="clicked-times">0</span> times
+        </div>
+        <hr>
+
+        <button
+                onclick="handleClick()"
+                id="click-button"
+                class="push-button"
+        >Click Me
+        </button>
+
+        <script>
+            function handleClick() {
+                console.log('clicked!')
+            }
+        </script>
+
+        <script src="{{ url_for('static', filename='js/button-count.js') }}"></script>
+    </div>
+{% endblock %}

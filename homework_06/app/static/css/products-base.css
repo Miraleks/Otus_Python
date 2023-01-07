@@ -1,0 +1,28 @@
+li  {
+            font-size: 20px;
+        }
+        /*li.odd {
+            background-color: azure;
+
+        }
+        li.even {
+            background-color: lightgrey;
+
+        }*/
+
+        li.product-list-item {
+            list-style-type: circle;
+        }
+
+        li.product-list-item:nth-child(even) {
+            background-color: lightgrey;
+            list-style-type: disc;
+        }
+
+        li.product-list-item:nth-child(odd) {
+            background-color: lightgreen;
+        }
+        a.product-item-link {
+            text-decoration: none;
+            font-size: 1.2em;
+        }
